@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>Apex Protocol</title>
+
+<!-- iOS install support -->
+<link rel="manifest" href="manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Apex" />
+<meta name="theme-color" content="#0A0A0B" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="icon" href="icons/icon-192.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<header class="topbar">
+  <div class="topbar-mark">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <polygon points="12,3 21,20 3,20" fill="var(--accent)"/>
+      <rect x="10.6" y="12.5" width="2.8" height="7.5" fill="var(--bg)"/>
+    </svg>
+    <span>APEX PROTOCOL</span>
+  </div>
+  <div class="topbar-streak" id="streakBadge">🔥 0</div>
+</header>
+
+<main id="app"></main>
+
+<nav class="tabbar" id="tabbar">
+  <button class="tab-btn active" data-tab="today">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2 2 7v13h20V7L12 2zm0 2.2 8 4.4V18H4V8.6l8-4.4z"/></svg>
+    <span>Today</span>
+  </button>
+  <button class="tab-btn" data-tab="train">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.57 14.86 22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>
+    <span>Train</span>
+  </button>
+  <button class="tab-btn" data-tab="log">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2z"/></svg>
+    <span>Log</span>
+  </button>
+  <button class="tab-btn" data-tab="progress">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 3v18h18v-2H5V3zm4 14h2V9H7zm4 0h2V5h-2zm4 0h2v-6h-2z"/></svg>
+    <span>Progress</span>
+  </button>
+  <button class="tab-btn" data-tab="more">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+    <span>More</span>
+  </button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
