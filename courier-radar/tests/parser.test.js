@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {parseOfferText,effectiveOfferRate} from '../lib-parser.js';
+test('parses a normal Uber Eats card',()=>{const p=parseOfferText(`Uber Eats\n$11.42\nSweetgreen\n2.7 mi\n24 min\nDelivery`);assert.equal(p.payout,11.42);assert.equal(p.miles,2.7);assert.equal(p.etaMinutes,24);assert.equal(p.merchant,'Sweetgreen');assert.equal(p.isShop,false)});
+test('detects Shop & Pay and items',()=>{const p=parseOfferText(`$18.50\nTarget\nShop & Pay\n8 items\n3.2 mi\n31 min`);assert.equal(p.isShop,true);assert.equal(p.itemCount,8);const r=effectiveOfferRate({...p,mode:'normal'});assert.ok(r.effectiveMinutes>31)});
