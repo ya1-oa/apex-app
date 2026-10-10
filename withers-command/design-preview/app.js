@@ -66,7 +66,7 @@ function progress(){const due=s.tasks.filter(t=>t.due<=today);const done=due.fil
 function nextTask(){return s.tasks.filter(t=>!t.done).sort((a,b)=>a.priority-b.priority||a.due.localeCompare(b.due))[0]}
 function todayView(){const p=progress();let top=nextTask();let active=s.tasks.filter(t=>!t.done&&t.id!==top?.id).sort((a,b)=>a.priority-b.priority||a.due.localeCompare(b.due)).slice(0,3);
  const events=s.events.filter(e=>e.date===today).sort((a,b)=>a.time.localeCompare(b.time));const gym=s.entries.find(x=>x.id==='gym68');
- return `${header('Today','Your work, time, and money. One decision at a time.')}
+ return `${header('Today','Tasks due, today’s schedule, and recent spending.')}
  ${top?`<section class="next-action"><div><div class="next-label">First priority · ${safe(top.category)}</div><h2>${safe(top.name)}</h2><div class="details">${top.estimate} minutes · ${top.steps?.length||0} clear steps · ${top.due<=today?'Due today or earlier':shortDay(top.due)}</div></div><div class="right"><button class="start-button" data-task="${safe(top.id)}">Open ${icon('arrow')}</button></div></section>`:''}
  ${section('Next in line','All work','work')}<div class="plain-list">${active.length?active.map(rowTask).join(''):'<div class="empty">Queue clear. Add a task when you need one.</div>'}</div>
  ${section('Schedule','Open calendar','calendar')}<div class="schedule-list">${events.length?events.map(rowEvent).join(''):'<div class="empty">Nothing scheduled today.</div>'}</div>
@@ -83,7 +83,7 @@ const tabs=`<div class="segmented" role="tablist"><button role="tab" aria-select
  return `${header('Work','Projects are organized by responsibility. Practice is separate from output.','PROJECTS & PRACTICE')}${tabs}<div>${content}</div>`;
 }
 function moneyView(){const spent=s.entries.filter(e=>e.kind==='expense').reduce((a,e)=>a+e.amount,0);const earned=s.entries.filter(e=>e.kind==='income').reduce((a,e)=>a+e.amount,0);
-return `${header('Money','Record what happened. Separate actual cash from opportunities.','PERSONAL LEDGER')}
+return `${header('Money','Balances, payments, and income you have recorded.','PERSONAL LEDGER')}
 <section class="money-summary"><div class="small-label">Available balance · manual</div><div class="money-amount">${s.balance===null?'Not entered':cash(s.balance)}</div><div class="money-detail">${s.balance===null?'Enter your current account balance to start.':'You entered this amount; it is not bank-synced.'}</div><div class="summary-rule"></div><div class="summary-foot"><div><div class="small-label">Expenses logged</div><strong>${cash(spent)}</strong></div><div><div class="small-label">Income logged</div><strong>${cash(earned)}</strong></div></div></section>
 <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="primary-button" data-action="expense">Record expense</button><button class="secondary-button" data-action="income">Record income</button><button class="secondary-button" data-action="balance">Edit balance</button></div>
 ${section('Transactions','Add entry','expense')}<div class="plain-list">${s.entries.slice().reverse().map(e=>`<div class="transaction"><div class="transaction-mark">${icon(e.kind==='expense'?'money':'bolt')}</div><div><h3>${safe(e.title)}</h3><p>${safe(e.category)} · ${shortDay(e.date)}</p></div><strong class="${e.kind==='expense'?'negative':''}">${e.kind==='expense'?'−':'+'}${cash(e.amount)}</strong></div>`).join('')}</div>
