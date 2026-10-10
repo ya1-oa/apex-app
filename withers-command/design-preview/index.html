@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#EEECE6" />
+<meta name="description" content="WITHERS — a quiet command center for work, time, craft and money." />
+<title>WITHERS — Today</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="desktop-rail" aria-label="Primary navigation">
+    <div class="rail-brand" aria-label="Withers"><span class="brand-seal">W</span><span>WITHERS</span></div>
+    <nav id="desktopNavigation"></nav>
+    <div class="rail-bottom"><span class="rail-stroke"></span><span>DEATH BROKER<br/>PERSONAL EDITION</span></div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar">
+      <button class="wordmark" id="homeBrand" title="Go to today"><span class="wordmark-icon">W<span></span></span><span>WITHERS</span></button>
+      <div class="topbar-actions">
+        <span class="sync-badge" title="This preview stores changes only on this device"><span class="sync-dot"></span><span>Local preview</span></span>
+        <button class="icon-button top-add" id="addButton" aria-label="Add an item" title="Add an item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+    </header>
+    <main id="screen" tabindex="-1"></main>
+    <nav class="bottom-nav" id="bottomNavigation" aria-label="Primary navigation"></nav>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog id="editorDialog" class="sheet">
+  <form id="editorForm" class="sheet-body" autocomplete="off">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-head"><div><p class="eyebrow" id="editorHint">NEW RECORD</p><h2 id="editorTitle">Add a task</h2></div><button type="button" class="icon-button close-button" id="closeEditor" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div id="editorFields"></div>
+    <div class="form-footer"><button type="button" class="tertiary-button" id="cancelEditor">Cancel</button><button type="submit" class="primary-button" id="submitEditor">Save</button></div>
+  </form>
+</dialog>
+<dialog id="actionDialog" class="sheet">
+  <div class="sheet-body menu-sheet"><div class="sheet-handle" aria-hidden="true"></div><div class="sheet-head"><div><p class="eyebrow">QUICK ENTRY</p><h2>Add to WITHERS</h2></div><button class="icon-button close-button" id="closeAction" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div id="actionChoices"></div></div>
+</dialog>
+<script src="./app.js" defer></script>
+</body>
+</html>
